@@ -1,11 +1,13 @@
 package com.example.foyerUniversitaire.Entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
 public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

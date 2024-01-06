@@ -1,32 +1,19 @@
 package com.example.foyerUniversitaire.Service;
 
 import com.example.foyerUniversitaire.Entity.Universite;
-import com.example.foyerUniversitaire.Repository.UniversiteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-@Service
-public class UniversiteService {
-    @Autowired
-    private UniversiteRepository universiteRepository;
+public interface UniversiteService {
 
-    public List<Universite> retrieveAllUniversities() {
-        return universiteRepository.findAll();
-    }
+    Universite addUniversite(Universite universites);
 
-    public Universite addUniversite(Universite u) {
-        return universiteRepository.save(u);
-    }
+    Universite updateUniversite(Universite universite);
 
-    public Universite updateUniversite(Universite u) {
-        return universiteRepository.save(u);
-    }
+    Universite retrieveUniversite(long idUniversite);
 
-    public Universite retrieveUniversite(long idUniversite) {
-        Optional<Universite> optionalUniversite = universiteRepository.findById(idUniversite);
-        return optionalUniversite.orElse(null);
-    }
+    void removeUniversite(long idUniversite);
+
+
+    List<Universite> retrieveAllUniversities();
 }

@@ -1,7 +1,7 @@
 package com.example.foyerUniversitaire.Controller;
 
 import com.example.foyerUniversitaire.Entity.Foyer;
-import com.example.foyerUniversitaire.Service.FoyerService;
+import com.example.foyerUniversitaire.Service.FoyerServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import java.util.List;
 public class FoyerRESTController {
 
     @Autowired
-    private FoyerService foyerService;
+    private FoyerServiceImp foyerService;
 
     @GetMapping
     public List<Foyer> retrieveFoyers() {

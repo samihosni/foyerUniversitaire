@@ -1,7 +1,7 @@
 package com.example.foyerUniversitaire.Controller;
 
 import com.example.foyerUniversitaire.Entity.Bloc;
-import com.example.foyerUniversitaire.Service.BlocService;
+import com.example.foyerUniversitaire.Service.BlocServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/bloc")
 public class BlocRESTController {
     @Autowired
-    private BlocService blocService;
+    private BlocServiceImp blocService;
 
     @GetMapping
     public List<Bloc> retrieveBlocs() {

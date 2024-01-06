@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FoyerService {
+public class FoyerServiceImp {
     @Autowired
     private FoyerRepository foyerRepository;
 

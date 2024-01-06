@@ -1,7 +1,7 @@
 package com.example.foyerUniversitaire.Controller;
 
 import com.example.foyerUniversitaire.Entity.Reservation;
-import com.example.foyerUniversitaire.Service.ReservationService;
+import com.example.foyerUniversitaire.Service.ReservationServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/reservation")
 public class ReservationRESTController {
     @Autowired
-    private ReservationService reservationService;
+    private ReservationServiceImp reservationService;
 
     @GetMapping
     public List<Reservation> retrieveAllReservation() {

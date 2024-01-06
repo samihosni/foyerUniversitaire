@@ -1,6 +1,9 @@
 package com.example.foyerUniversitaire.Entity;
 
 import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity
 public class Bloc {
     @Id
@@ -10,7 +13,8 @@ public class Bloc {
     @ManyToOne
     @JoinColumn(name = "foyer_id")
     private Foyer foyer;
-
+    @OneToMany(mappedBy = "bloc")
+    private List<Chambre> chambres;
     private String nomBloc;
     private Long capaciteBloc;
 
