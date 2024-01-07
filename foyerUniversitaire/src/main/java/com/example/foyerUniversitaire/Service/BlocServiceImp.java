@@ -1,6 +1,7 @@
 package com.example.foyerUniversitaire.Service;
 
 import com.example.foyerUniversitaire.Entity.Bloc;
+import com.example.foyerUniversitaire.Entity.Etudiant;
 import com.example.foyerUniversitaire.Repository.BlocRepository;
 import com.example.foyerUniversitaire.Repository.ChambreRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,16 +30,26 @@ public class BlocServiceImp implements BlockService {
 
     @Override
     public Bloc updateBloc(Bloc bloc) {
-        return blocRepo.save(bloc);
-    }
+        Optional<Bloc> existingBloc = blocRepo.findById(bloc.getIdBloc());
+        if (existingBloc.isPresent()) {
+            Bloc updatedBloc = existingBloc.get();
+            // Mettez à jour les champs de l'étudiant
+            updatedBloc.setNomBloc(bloc.getNomBloc());
+            updatedBloc.setCapaciteBloc(bloc.getCapaciteBloc());
 
+            // ... autres champs
+
+            return blocRepo.save(updatedBloc);
+        } else {
+            throw new IllegalArgumentException("Le bloc avec l'ID " + bloc.getIdBloc() + " n'existe pas.");
+        }
+    }
     @Override
     public Bloc addBloc(Bloc bloc) {
         return blocRepo.save(bloc);
     }
 
-    @Override
-    public Bloc retrieveBloc(long idBloc) {
+        public Bloc retrieveBloc(long idBloc) {
         return blocRepo.findById(idBloc).orElse(null);
     }
 

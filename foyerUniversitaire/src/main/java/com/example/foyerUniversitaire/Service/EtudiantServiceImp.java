@@ -33,6 +33,9 @@ public class EtudiantServiceImp implements EtudiantService{
             // Mettez à jour les champs de l'étudiant
             updatedEtudiant.setNomEtudiant(etudiant.getNomEtudiant());
             updatedEtudiant.setPrenomEtudiant(etudiant.getPrenomEtudiant());
+            updatedEtudiant.setCin(etudiant.getCin());
+            updatedEtudiant.setEcole(etudiant.getEcole());
+            updatedEtudiant.setDateNaissance(etudiant.getDateNaissance());
             // ... autres champs
 
             return etudiantRepository.save(updatedEtudiant);

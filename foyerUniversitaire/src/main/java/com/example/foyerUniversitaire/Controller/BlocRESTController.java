@@ -14,27 +14,33 @@ public class BlocRESTController {
     @Autowired
     private BlocServiceImp blocService;
 
-    @GetMapping
+    @GetMapping("/listeBloc")
     public List<Bloc> retrieveBlocs() {
         return blocService.retrieveBlocs();
     }
 
-    @PostMapping
+    @PostMapping("/ajouterBloc")
     public Bloc addBloc(@RequestBody Bloc bloc) {
         return blocService.addBloc(bloc);
     }
 
-    @PutMapping
-    public Bloc updateBloc(@RequestBody Bloc bloc) {
+    @PutMapping("/modifierBloc/{id}")
+    public Bloc updateBloc(@RequestBody Bloc bloc, @PathVariable Long id) {
+        bloc.setIdBloc(id);
+        bloc.setNomBloc(bloc.getNomBloc());
+        bloc.setCapaciteBloc(bloc.getCapaciteBloc());
+
+
+
         return blocService.updateBloc(bloc);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/afficherBloc/{id}")
     public Bloc retrieveBloc(@PathVariable long id) {
         return blocService.retrieveBloc(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/supprimerBloc/{id}")
     public void removeBloc(@PathVariable long id) {
         blocService.removeBloc(id);
     }

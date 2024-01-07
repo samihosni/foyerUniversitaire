@@ -15,23 +15,32 @@ public class ChambreRESTController {
     @Autowired
     private ChambreServiceImp chambreService;
 
-    @GetMapping
+    @GetMapping("/listeChambre")
     public List<Chambre> retrieveAllChambres() {
         return chambreService.retrieveAllChambres();
     }
 
-    @PostMapping
+    @PostMapping("/ajouterChambre")
     public Chambre addChambre(@RequestBody Chambre chambre) {
         return chambreService.addChambre(chambre);
     }
 
-    @PutMapping
-    public Chambre updateChambre(@RequestBody Chambre chambre) {
+    @PutMapping("/modifierChambre/{id}")
+    public Chambre updateChambre(@RequestBody Chambre chambre, @PathVariable Long id) {
+        chambre.setIdChambre(id);
+        chambre.setNumChambre(chambre.getNumChambre());
+        chambre.setTypeC(chambre.getTypeC());
+
         return chambreService.updateChambre(chambre);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/afficherChambre/{id}")
     public Chambre retrieveChambre(@PathVariable long id) {
+
         return chambreService.retrieveChambre(id);
+    }
+    @DeleteMapping("/supprimerChambre/{id}")
+    public void removeChambre(@PathVariable long id) {
+        chambreService.removeChambre(id);
     }
 }

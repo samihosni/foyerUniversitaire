@@ -28,8 +28,10 @@ public class UniversiteRESTController {
 
     @PutMapping("/modifierUniversite/{id}")
     public Universite updateUniversite(@RequestBody Universite universite, @PathVariable Long id) {
-        Universite universite1=universiteService.retrieveUniversite(id);
         universite.setIdUniversite(id);
+        universite.setNomUniversite(universite.getNomUniversite());
+        universite.setAdresseUniversite(universite.getAdresseUniversite());
+
         return universiteService.updateUniversite(universite);
     }
 

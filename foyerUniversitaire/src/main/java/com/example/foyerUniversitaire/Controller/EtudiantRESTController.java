@@ -29,9 +29,13 @@ public class EtudiantRESTController {
 
     @PutMapping("/modifierEtudiant/{id}")
     public Etudiant updateEtudiant(@RequestBody Etudiant etudiant, @PathVariable Long id  ) {
-        Etudiant etudiant1=etudiantServiceImp.retrieveEtudiant(id);
         etudiant.setIdEtudiant(id);
-        etudiant.setPrenomEtudiant(etudiant1.getPrenomEtudiant());
+        etudiant.setPrenomEtudiant(etudiant.getPrenomEtudiant());
+        etudiant.setNomEtudiant(etudiant.getNomEtudiant());
+        etudiant.setCin(etudiant.getCin());
+        etudiant.setEcole(etudiant.getEcole());
+        etudiant.setDateNaissance(etudiant.getDateNaissance());
+
 
 
         return etudiantServiceImp.updateEtudiant(etudiant);
