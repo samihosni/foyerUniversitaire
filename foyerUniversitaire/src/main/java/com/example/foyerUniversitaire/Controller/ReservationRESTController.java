@@ -15,17 +15,17 @@ public class ReservationRESTController {
     @Autowired
     private ReservationServiceImp reservationService;
 
-    @GetMapping
+    @GetMapping("/listeReservation")
     public List<Reservation> retrieveAllReservation() {
         return reservationService.retrieveAllReservation();
     }
 
-    @PutMapping
-    public Reservation updateReservation(@RequestBody Reservation reservation) {
+    @PutMapping("/modifierReservation/{id}")
+    public Reservation updateReservation(@RequestBody Reservation reservation, @PathVariable Long id) {
         return reservationService.updateReservation(reservation);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/afficherReservation/{id}")
     public Reservation retrieveReservation(@PathVariable String id) {
         return reservationService.retrieveReservation(id);
     }

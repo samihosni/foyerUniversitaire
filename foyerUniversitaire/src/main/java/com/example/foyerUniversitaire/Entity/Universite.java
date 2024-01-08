@@ -1,6 +1,7 @@
 package com.example.foyerUniversitaire.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -41,5 +42,18 @@ import jakarta.persistence.*;
 
         private String adresseUniversite;
 
+    public Foyer getFoyer() {
+        return foyer;
+    }
 
+    public void setFoyer(Foyer foyer) {
+        this.foyer = foyer;
+    }
+
+    @Override
+    public String toString() {
+        return "Universite{" +
+                "foyer=" + foyer +
+                '}';
+    }
 }

@@ -39,8 +39,5 @@ public class ChambreRESTController {
 
         return chambreService.retrieveChambre(id);
     }
-    @DeleteMapping("/supprimerChambre/{id}")
-    public void removeChambre(@PathVariable long id) {
-        chambreService.removeChambre(id);
-    }
+
 }

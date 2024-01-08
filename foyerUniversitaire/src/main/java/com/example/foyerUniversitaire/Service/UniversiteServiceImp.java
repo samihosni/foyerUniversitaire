@@ -1,5 +1,4 @@
 package com.example.foyerUniversitaire.Service;
-
 import com.example.foyerUniversitaire.Entity.Universite;
 import com.example.foyerUniversitaire.Repository.UniversiteRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,12 +11,12 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public  class UniversiteServiceImp implements UniversiteService {
-    @Autowired
+
+   @Autowired
     private UniversiteRepository universiteRepository;
-
-
     @Override
     public Universite addUniversite(Universite universites) {
+
         return universiteRepository.save(universites);
     }
 
@@ -51,5 +50,8 @@ public  class UniversiteServiceImp implements UniversiteService {
 
     @Override
     public List<Universite> retrieveAllUniversities() {
-        return universiteRepository.findAll();    }
+        return universiteRepository.findAll();
+    }
+
+
 }

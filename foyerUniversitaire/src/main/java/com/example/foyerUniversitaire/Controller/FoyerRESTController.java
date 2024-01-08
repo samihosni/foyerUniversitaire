@@ -16,27 +16,31 @@ public class FoyerRESTController {
     @Autowired
     private FoyerServiceImp foyerService;
 
-    @GetMapping
+    @GetMapping("/listeFoyer")
     public List<Foyer> retrieveFoyers() {
         return foyerService.retrieveFoyers();
     }
 
-    @PostMapping
+    @PostMapping("/ajouterFoyer")
     public Foyer addFoyer(@RequestBody Foyer foyer) {
         return foyerService.addFoyer(foyer);
     }
 
-    @PutMapping
-    public Foyer updateFoyer(@RequestBody Foyer foyer) {
+    @PutMapping("/modifierFoyer/{id}")
+    public Foyer updateFoyer(@RequestBody Foyer foyer, @PathVariable Long id) {
+        foyer.setIdFoyer(id);
+        foyer.setNomFoyer(foyer.getNomFoyer());
+        foyer.setCapaciteFoyer(foyer.getCapaciteFoyer());
+
         return foyerService.updateFoyer(foyer);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/afficherFoyer/{id}")
     public Foyer retrieveFoyer(@PathVariable long id) {
         return foyerService.retrieveFoyer(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/supprimerFoyer/{id}")
     public void removeFoyer(@PathVariable long id) {
         foyerService.removeFoyer(id);
     }

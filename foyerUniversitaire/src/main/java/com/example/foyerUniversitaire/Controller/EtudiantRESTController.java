@@ -36,8 +36,6 @@ public class EtudiantRESTController {
         etudiant.setEcole(etudiant.getEcole());
         etudiant.setDateNaissance(etudiant.getDateNaissance());
 
-
-
         return etudiantServiceImp.updateEtudiant(etudiant);
     }
 

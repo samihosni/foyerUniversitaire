@@ -1,5 +1,6 @@
 package com.example.foyerUniversitaire.Controller;
 
+import com.example.foyerUniversitaire.Entity.Foyer;
 import com.example.foyerUniversitaire.Entity.Universite;
 import com.example.foyerUniversitaire.Service.UniversiteService;
 import com.example.foyerUniversitaire.Service.UniversiteServiceImp;
@@ -40,8 +41,5 @@ public class UniversiteRESTController {
         return universiteService.retrieveUniversite(id);
     }
 
-    @DeleteMapping("/supprimerUniversite/{id}")
-    public void removeUniversite(@PathVariable long id) {
-        universiteService.removeUniversite(id);
-    }
+
 }

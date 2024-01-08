@@ -1,8 +1,9 @@
 package com.example.foyerUniversitaire.Service;
 
-import com.example.foyerUniversitaire.Entity.Bloc;
 import com.example.foyerUniversitaire.Entity.Chambre;
+import com.example.foyerUniversitaire.Entity.Etudiant;
 import com.example.foyerUniversitaire.Repository.ChambreRepository;
+import com.example.foyerUniversitaire.Repository.EtudiantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ import java.util.Optional;
 public class ChambreServiceImp implements ChambreService {
     @Autowired
     private ChambreRepository chambreRepository;
+    @Autowired
+    private EtudiantRepository etudiantRepository;
     @Override
     public List<Chambre> retrieveAllChambres() {
         return chambreRepository.findAll();
@@ -48,4 +51,6 @@ public class ChambreServiceImp implements ChambreService {
     public void removeChambre(long id) {
         chambreRepository.deleteById(id);
     }
+
+
 }

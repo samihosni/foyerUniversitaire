@@ -16,4 +16,5 @@ public interface UniversiteService {
 
 
     List<Universite> retrieveAllUniversities();
+
 }

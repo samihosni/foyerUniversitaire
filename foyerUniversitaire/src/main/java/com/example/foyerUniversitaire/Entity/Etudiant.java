@@ -13,8 +13,22 @@ public class Etudiant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEtudiant;
 
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+
+
+
+
     @ManyToMany(mappedBy = "etudiants")
     private List<Reservation> reservations;
+
+
 
     private String nomEtudiant;
     private String prenomEtudiant;
@@ -72,4 +86,6 @@ public class Etudiant {
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
+
+
 }

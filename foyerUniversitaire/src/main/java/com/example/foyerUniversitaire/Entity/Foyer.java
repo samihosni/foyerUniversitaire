@@ -8,7 +8,7 @@ public class Foyer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFoyer;
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "universite_id")
     private Universite universite;
 
@@ -18,7 +18,22 @@ public class Foyer {
     private String nomFoyer;
     private Long capaciteFoyer;
 
-    // Getters et setters
+    public Universite getUniversite() {
+        return universite;
+    }
+
+    public void setUniversite(Universite universite) {
+        this.universite = universite;
+    }
+
+    public List<Bloc> getBlocs() {
+        return blocs;
+    }
+
+    public void setBlocs(List<Bloc> blocs) {
+        this.blocs = blocs;
+    }
+// Getters et setters
 
 
     public Long getIdFoyer() {

@@ -18,7 +18,22 @@ public class Bloc {
     private String nomBloc;
     private Long capaciteBloc;
 
-    // Getters et  setters
+    public Foyer getFoyer() {
+        return foyer;
+    }
+
+    public void setFoyer(Foyer foyer) {
+        this.foyer = foyer;
+    }
+
+    public List<Chambre> getChambres() {
+        return chambres;
+    }
+
+    public void setChambres(List<Chambre> chambres) {
+        this.chambres = chambres;
+    }
+// Getters et  setters
 
 
     public Long getIdBloc() {

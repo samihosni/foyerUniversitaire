@@ -14,4 +14,5 @@ public interface ChambreService {
     Chambre retrieveChambre(long idChambre);
 
     void removeChambre(long id);
+
 }
