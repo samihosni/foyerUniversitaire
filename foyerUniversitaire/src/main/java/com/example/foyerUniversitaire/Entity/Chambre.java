@@ -1,4 +1,7 @@
 package com.example.foyerUniversitaire.Entity;
+ import com.fasterxml.jackson.annotation.JsonBackReference;
+ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+ import com.fasterxml.jackson.annotation.JsonManagedReference;
  import jakarta.persistence.*;
 
  import java.util.List;
@@ -32,11 +35,11 @@ public class Chambre {
     public void setTypeChambre(TypeChambre typeChambre) {
         this.typeChambre = typeChambre;
     }
-
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "bloc_id")
     private Bloc bloc;
-
+    @JsonManagedReference
     @OneToMany(mappedBy = "chambre")
     private List<Reservation> reservations;
 

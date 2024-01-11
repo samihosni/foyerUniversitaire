@@ -1,7 +1,9 @@
 package com.example.foyerUniversitaire.Controller;
 
 import com.example.foyerUniversitaire.Entity.Bloc;
+import com.example.foyerUniversitaire.Entity.Foyer;
 import com.example.foyerUniversitaire.Service.AffecterChambreBlocImp;
+import com.example.foyerUniversitaire.Service.FoyerToBLocImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ChambreBloc")
-public class AffecterChambreBlocRESTController {
+@RequestMapping("/blocToFoyer")
+public class BlocToFoyerRESTController {
     @Autowired
-    private AffecterChambreBlocImp affecterChambreBlocImp;
+    private FoyerToBLocImp foyerToBLocImp;
 
-    @PostMapping("/affecterChambresBloc/{idBloc}")
-    public ResponseEntity<Bloc> affecterChambresABloc(@RequestBody List<Long> numChambres, @PathVariable long idBloc) {
-        Bloc bloc = affecterChambreBlocImp.affecterChambresABloc(numChambres, idBloc);
-        if (bloc != null) {
-            return ResponseEntity.ok(bloc);
+    @PostMapping("/affecterblocFoyer/{idBloc}/{nomFoyer}")
+    public ResponseEntity<Foyer> affecterChambresABloc(@PathVariable List<Long> idBloc, @PathVariable String nomFoyer) {
+        Foyer foyer = foyerToBLocImp.BlocToFoyer(idBloc, nomFoyer);
+        if (foyer != null) {
+            return ResponseEntity.ok(foyer);
         } else {
             // Gérez le cas où le bloc ou les chambres n'ont pas été trouvés
             return ResponseEntity.notFound().build();

@@ -12,18 +12,23 @@ import org.springframework.stereotype.Service;
 public class DesaffectationServiceImp implements DesaffectationService {
     @Autowired
     private UniversiteRepository universiteRepository;
+    @Autowired
+    private FoyerRepository foyerRepository;
     @Override
     @Transactional
     public Universite desaffecterFoyerUniversite(Long idUniversite) {
         Universite universite = universiteRepository.findById(idUniversite)
-                .orElseThrow(() -> new RuntimeException("Université non trouvée avec l'identifiant : " + idUniversite));
+                .orElse(null);
 
         Foyer foyer = universite.getFoyer();
-        if (foyer != null) {
-            universite.setFoyer(null); // Désaffectation
+        if (foyer != null && universite!=null) {
+            universite.setFoyer(null);
+            foyer.setUniversite(null);
+            foyerRepository.save(foyer);
+            universiteRepository.save(universite);
+            return universite;
+        } else {
+            return null;
         }
-
-        return universiteRepository.save(universite);
-
     }
 }

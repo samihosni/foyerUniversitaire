@@ -41,5 +41,8 @@ public class UniversiteRESTController {
         return universiteService.retrieveUniversite(id);
     }
 
-
+    @GetMapping("/scured")
+    public String secured(){
+        return "Ken rit message hedha raw jawek behy oumour securité sahbiiiii ! ";
+    }
 }

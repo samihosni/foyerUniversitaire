@@ -50,10 +50,5 @@ import jakarta.persistence.*;
         this.foyer = foyer;
     }
 
-    @Override
-    public String toString() {
-        return "Universite{" +
-                "foyer=" + foyer +
-                '}';
-    }
+
 }

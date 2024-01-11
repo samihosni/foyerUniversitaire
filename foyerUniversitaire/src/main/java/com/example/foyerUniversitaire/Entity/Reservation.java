@@ -1,4 +1,7 @@
 package com.example.foyerUniversitaire.Entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -25,11 +28,11 @@ public class Reservation {
     public void setEtudiants(List<Etudiant> etudiants) {
         this.etudiants = etudiants;
     }
-
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "chambre_id")
     private Chambre chambre;
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "reservation_etudiant", joinColumns = @JoinColumn(name = "reservation_id"), inverseJoinColumns = @JoinColumn(name = "etudiant_id"))
     private List<Etudiant> etudiants;

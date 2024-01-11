@@ -8,7 +8,6 @@ import java.util.List;
 public interface AffecterChambreBloc {
 
 
-
     @Transactional
-    Bloc affecterChambresABloc(List<Long> idChambre, Long idBloc);
+    Bloc affecterChambresABloc(List<Long> numChambres, Long idBloc);
 }

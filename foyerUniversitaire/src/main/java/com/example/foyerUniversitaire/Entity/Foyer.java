@@ -1,4 +1,7 @@
 package com.example.foyerUniversitaire.Entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -8,10 +11,11 @@ public class Foyer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFoyer;
+    @JsonBackReference
     @OneToOne()
     @JoinColumn(name = "universite_id")
     private Universite universite;
-
+    @JsonManagedReference
     @OneToMany(mappedBy = "foyer")
     private List<Bloc> blocs;
 

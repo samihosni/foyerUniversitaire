@@ -2,45 +2,46 @@ package com.example.foyerUniversitaire.Service;
 
 import com.example.foyerUniversitaire.Entity.Bloc;
 import com.example.foyerUniversitaire.Entity.Chambre;
+import com.example.foyerUniversitaire.Entity.Foyer;
 import com.example.foyerUniversitaire.Repository.BlocRepository;
 import com.example.foyerUniversitaire.Repository.ChambreRepository;
+import com.example.foyerUniversitaire.Repository.FoyerRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
-public class AffecterChambreBlocImp implements AffecterChambreBloc {
+public class FoyerToBLocImp implements FoyerToBLoc {
     @Autowired
     private BlocRepository blocRepository;
 
     @Autowired
-    private ChambreRepository chambreRepository;
+    private FoyerRepository foyerRepository;
     @Override
     @Transactional
-    public Bloc affecterChambresABloc(List<Long> numChambres, Long idBloc) {
-        Bloc bloc = blocRepository.findById(idBloc).orElse(null);
+    public Foyer BlocToFoyer(List<Long> idBloc, String nomFoyer) {
+        Foyer foyer = foyerRepository.findByNomFoyer(nomFoyer);
 
-        if (bloc != null) {
+        if (foyer != null) {
             //List<Chambre> chambres = chambreRepository.findAllById(numChambres);
-            List<Chambre> chambres = chambreRepository.findAllByNumChambreIn(numChambres);
+            List<Bloc> blocs = blocRepository.findAllById(idBloc);
 
-            if (!chambres.isEmpty()) {
+            if (!blocs.isEmpty()) {
                 // Assurez-vous que les chambres n'appartiennent à aucun autre bloc
-                for (Chambre chambre : chambres) {
-                    if (chambre.getBloc() != null) {
-                        throw new IllegalArgumentException("La chambre avec l'ID " + chambre.getIdChambre() +
-                                " appartient déjà à un autre bloc.");
+                for (Bloc bloc : blocs) {
+                    if (bloc.getFoyer() != null) {
+                        throw new IllegalArgumentException("Le bloc avec l'ID " + bloc.getIdBloc() +
+                                " appartient déjà à un autre foyer.");
                     }
-                    chambre.setBloc(bloc);
+                    bloc.setFoyer(foyer);
                 }
 
-                bloc.getChambres().addAll(chambres);
-                blocRepository.save(bloc);
-                chambreRepository.saveAll(chambres);
+                foyer.getBlocs().addAll(blocs);
+                foyerRepository.save(foyer);
+                blocRepository.saveAll(blocs);
 
-                return bloc;
+                return foyer;
             } else {
                 throw new IllegalArgumentException("Aucune chambre avec les ID spécifiés n'a été trouvée.");
             }
