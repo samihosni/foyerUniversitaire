@@ -2,9 +2,12 @@ package com.example.foyerUniversitaire.Controller;
 
 import com.example.foyerUniversitaire.Entity.Foyer;
 import com.example.foyerUniversitaire.Entity.Universite;
+import com.example.foyerUniversitaire.Security.UserPrincipal;
 import com.example.foyerUniversitaire.Service.UniversiteService;
 import com.example.foyerUniversitaire.Service.UniversiteServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,8 +44,9 @@ public class UniversiteRESTController {
         return universiteService.retrieveUniversite(id);
     }
 
-    @GetMapping("/scured")
-    public String secured(){
-        return "Ken rit message hedha raw jawek behy oumour securité sahbiiiii ! ";
+    @GetMapping("/secured")
+    public String secured(@AuthenticationPrincipal UserPrincipal userPrincipal){
+        return "Ken rit message hedha raw jawek behy oumour securité sahbiiiii ! " + userPrincipal.getEmail()+ "User Id:"
+                +userPrincipal.getUserId();
     }
 }
