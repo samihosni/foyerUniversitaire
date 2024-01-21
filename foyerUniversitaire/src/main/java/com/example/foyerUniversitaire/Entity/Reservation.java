@@ -21,21 +21,22 @@ public class Reservation {
         this.chambre = chambre;
     }
 
-    public List<Etudiant> getEtudiants() {
-        return etudiants;
-    }
+    //public List<Etudiant> getEtudiants() {
+        //return etudiants;
+    //}
 
-    public void setEtudiants(List<Etudiant> etudiants) {
+    public void setEtudiants(Etudiant etudiant) {
+
         this.etudiants = etudiants;
     }
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "chambre_id")
     private Chambre chambre;
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "reservation_etudiant", joinColumns = @JoinColumn(name = "reservation_id"), inverseJoinColumns = @JoinColumn(name = "etudiant_id"))
-    private List<Etudiant> etudiants;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "etudiant_id")
+    private Etudiant etudiants;
 
     private String designationRes;
     private Date anneeUniversitaire;

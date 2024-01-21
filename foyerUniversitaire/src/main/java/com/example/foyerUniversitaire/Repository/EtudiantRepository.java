@@ -6,9 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface EtudiantRepository extends JpaRepository<Etudiant, Long> {
+public interface EtudiantRepository extends JpaRepository<Etudiant, Long>, EtudiantRepositoryCustom {
 
-    Optional<Object> findByCin(long cin);
 
 
 }

@@ -16,5 +16,4 @@ public interface EtudiantService {
     void removeEtudiant(long idEtudiant);
 
 
-    Etudiant getEtudiant(Long cin);
 }

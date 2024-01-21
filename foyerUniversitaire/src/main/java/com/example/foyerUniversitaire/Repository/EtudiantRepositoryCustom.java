@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface EtudiantRepositoryCustom {
 
-    Optional<Etudiant> findByCin(long cin);
+    Etudiant findByCin(long cin);
 
 }

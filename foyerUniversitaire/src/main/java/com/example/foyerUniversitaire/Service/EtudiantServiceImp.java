@@ -55,12 +55,7 @@ public class EtudiantServiceImp implements EtudiantService{
         etudiantRepository.deleteById(idEtudiant);
     }
 
-    @Override
-    public Etudiant getEtudiant(Long cin) {
-        Optional<Object> etudiant= etudiantRepository.findByCin(cin);
 
-        return (Etudiant) etudiant.orElseThrow(() -> new RuntimeException("Étudiant non trouvé avec le CIN : " + cin));
-    }
 
 
 }

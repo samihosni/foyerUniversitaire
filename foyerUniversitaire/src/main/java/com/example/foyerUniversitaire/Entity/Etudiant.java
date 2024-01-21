@@ -25,7 +25,7 @@ public class Etudiant {
 
 
 
-    @ManyToMany(mappedBy = "etudiants")
+    @OneToMany(mappedBy = "etudiants")
     private List<Reservation> reservations;
 
 
